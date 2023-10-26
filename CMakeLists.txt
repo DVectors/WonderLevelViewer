@@ -13,6 +13,10 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS OpenGLWidgets)
 
+#For added libraries
+add_subdirectory(third-party/yaml-cpp)
+add_subdirectory(third-party/SFML)
+
 set(PROJECT_SOURCES
         main.cpp
         mainwindow.cpp
@@ -24,6 +28,10 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(WonderLevelViewer
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        yamlparser.h
+        yamlparser.cpp
+        walls.h
+        walls.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET WonderLevelViewer APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -45,6 +53,8 @@ endif()
 
 target_link_libraries(WonderLevelViewer PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 target_link_libraries(WonderLevelViewer PRIVATE Qt${QT_VERSION_MAJOR}::OpenGLWidgets)
+target_link_libraries(WonderLevelViewer PRIVATE yaml-cpp)
+target_link_libraries(WonderLevelViewer PRIVATE sfml-graphics)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

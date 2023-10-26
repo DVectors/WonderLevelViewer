@@ -31,7 +31,7 @@
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>971</width>
+       <width>981</width>
        <height>521</height>
       </rect>
      </property>
@@ -118,10 +118,23 @@
     <property name="title">
      <string>File</string>
     </property>
+    <addaction name="separator"/>
+    <addaction name="actionOpenLevel"/>
+    <addaction name="actionExit"/>
    </widget>
    <addaction name="menuWonderLevelViewer"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpenLevel">
+   <property name="text">
+    <string>Open Level</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
